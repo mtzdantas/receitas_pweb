@@ -1,0 +1,38 @@
+body {
+    text-align: center;
+}
+
+.verso {
+    color: blue;
+}
+
+.mote {
+    color: red;
+}
+
+
+.poeta {
+    background-color: rgb(190, 124, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+a {
+    font-size: 24px;
+    color: white;
+    transition: 1s;
+}
+
+a:hover {
+    color: black;
+}
