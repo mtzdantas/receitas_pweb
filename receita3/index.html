@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receita 3</title>
+
+</head>
+<body>
+  <div id="divBotao">
+    <button id="botaoCarregar">Carregando cervejas...</button>
+  </div>
+  <div id="divCerveja">
+
+  </div>
+</body>
+<script>
+  let visivel = false;
+  function carregarDiv() {
+
+    let divCerveja = document.getElementById("divCerveja");
+
+    if (visivel) {
+      divCerveja.innerHTML = "";
+    } else {
+      divCerveja.innerHTML = `<h1>Guinness</h1>`;
+    }
+
+    visivel = !visivel;
+  }
+
+  let botao = document.getElementById("botaoCarregar");
+  botao.addEventListener("click", carregarDiv);
+</script>
+</html>
