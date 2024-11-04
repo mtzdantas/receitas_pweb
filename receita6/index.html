@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div><button id="botaoCarregar">Carregar Cervejas...</button></div>
+  <table id="cervejasTabela">
+    <thead id="cabecalhosTabela">
+      <!-- Os cabeçalhos serão inseridos aqui -->
+    </thead>
+    <tbody id="cervejasDiv">
+      <!-- Os dados das cervejas serão inseridos aqui -->
+    </tbody>
+  </table>
+</body>   
+
+<script>
+  let cervejas = [
+     {
+        name: "Guiness", 
+        alcohol: "10%",
+        style: "Imperial Stout",
+        ibu: "50"            
+     }, 
+
+     {
+        name: "Desperados",
+        alcohol: "6%",
+        style: "Lager",
+        ibu: "15"             
+     }, 
+
+     {
+        name: "Becks",
+        alcohol: "5%",
+        style: "Pilsen",
+        ibu: "20"             
+     }
+  ];
+
+  const carregarDiv = (cs, cabecalhos = ["Nome", "Álcool", "Estilo", "Amargor"], elementId = "cervejasDiv", propriedades = ["name", "alcohol", "style", "ibu"]) => {
+     const tbody = document.getElementById(elementId);
+     const thead = document.getElementById("cabecalhosTabela");
+
+     tbody.innerHTML = ""; // Limpa o conteúdo anterior
+     thead.innerHTML = ""; // Limpa os cabeçalhos anteriores
+
+     // Criação dos cabeçalhos
+     const cabecalhoHtml = cabecalhos.map(item => `<th>${item}</th>`).join("\n");
+     thead.innerHTML = `<tr>${cabecalhoHtml}</tr>`;
+
+     // Preenche o corpo da tabela
+     const itensHtml = cs.map(item => {
+       // Acesse as propriedades do objeto com valores padrão
+       const nome = item[propriedades[0]] || 'N/A';
+       const alcool = item[propriedades[1]] || 'N/A';
+       const estilo = item[propriedades[2]] || 'N/A';
+       const ibu = item[propriedades[3]] || 'N/A';
+       
+       return `
+         <tr>
+           <td>${nome}</td>
+           <td>${alcool}</td>
+           <td>${estilo}</td>
+           <td>${ibu}</td>
+         </tr>`;
+     });
+     
+     tbody.innerHTML = itensHtml.join("\n");
+  };
+
+  let botao = document.getElementById("botaoCarregar");
+  botao.addEventListener("click", () => carregarDiv(cervejas));                 
+</script>
+</html>
